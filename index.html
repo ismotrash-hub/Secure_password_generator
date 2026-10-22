@@ -1,0 +1,242 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Generate strong passwords locally in your browser using cryptographically secure randomness.">
+    <meta name="theme-color" content="#0A1020">
+
+    <title>Secure Password Generator</title>
+
+    <link rel="stylesheet" href="styles.css">
+    <script src="password_script.js" defer></script>
+</head>
+
+<body>
+    <div class="site-shell">
+
+        <header class="site-header">
+            <a class="brand" href="#top" aria-label="Password generator home">
+                <span class="brand-mark" aria-hidden="true">✳</span>
+                <span>cipher<span class="brand-accent">pass</span></span>
+            </a>
+
+            <nav aria-label="Main navigation">
+                <a href="#generator">Generator</a>
+                <a href="#security">Security</a>
+            </nav>
+
+            <span class="header-status">
+                <span class="status-dot"></span>
+                Local-first
+            </span>
+        </header>
+
+        <main id="top">
+
+            <section class="hero">
+                <p class="eyebrow">
+                    <span class="status-dot"></span>
+                    PRIVACY-FOCUSED PASSWORD GENERATION
+                </p>
+
+                <h1>
+                    Strong passwords.
+                    <span>Zero guesswork.</span>
+                </h1>
+
+                <p class="hero-description">
+                    Generate unpredictable passwords using your browser's
+                    cryptographic random number generator. Simple, fast,
+                    and designed with privacy in mind.
+                </p>
+
+                <div class="hero-features">
+                    <span>✦ Browser-based generation</span>
+                    <span>✦ Cryptographic randomness</span>
+                    <span>✦ No account required</span>
+                </div>
+            </section>
+
+            <section id="generator" class="generator-section" aria-labelledby="generator-heading">
+
+                <div class="section-heading">
+                    <div>
+                        <p class="section-kicker">THE GENERATOR / 01</p>
+                        <h2 id="generator-heading">Create your password</h2>
+                    </div>
+                    <p>Configure your preferences and generate a new password.</p>
+                </div>
+
+                <div class="main-functions">
+
+                    <div class="checkboxes">
+                        <div class="panel-heading">
+                            <h3>Preferences</h3>
+                            <span>01 / SETTINGS</span>
+                        </div>
+
+                        <div class="number_amount_class">
+                            <label for="number-amount">Password length</label>
+                            <div class="length-control">
+                                <input
+                                    type="number"
+                                    min="4"
+                                    max="64"
+                                    value="16"
+                                    id="number-amount"
+                                    aria-describedby="length-help"
+                                >
+                                <span>characters</span>
+                            </div>
+                            <p class="field-help" id="length-help">
+                                Choose between 4 and 64 characters.
+                            </p>
+                        </div>
+
+                        <fieldset class="character-options">
+                            <legend>Character types</legend>
+
+                            <div class="uppercase_checkbox option-row">
+                                <input type="checkbox" name="Uppercase" id="uppercase" checked>
+                                <label for="uppercase">
+                                    Uppercase letters
+                                    <span>A–Z</span>
+                                </label>
+                            </div>
+
+                            <div class="lowercase_checkbox option-row">
+                                <input type="checkbox" name="Lowercase" id="lowercase" checked>
+                                <label for="lowercase">
+                                    Lowercase letters
+                                    <span>a–z</span>
+                                </label>
+                            </div>
+
+                            <div class="numbers_checkbox option-row">
+                                <input type="checkbox" name="Numbers" id="numbers" checked>
+                                <label for="numbers">
+                                    Numbers
+                                    <span>0–9</span>
+                                </label>
+                            </div>
+
+                            <div class="symbols_checkbox option-row">
+                                <input type="checkbox" name="Symbols" id="symbols" checked>
+                                <label for="symbols">
+                                    Special symbols
+                                    <span>! @ #</span>
+                                </label>
+                            </div>
+                        </fieldset>
+
+                        <p class="settings-footnote">
+                            Each enabled character is selected using
+                            cryptographically secure randomness.
+                        </p>
+                    </div>
+
+                    <div class="result-panel">
+                        <div class="panel-heading">
+                            <h3>Your password</h3>
+                            <span>02 / OUTPUT</span>
+                        </div>
+
+                        <div class="user_output">
+
+                            <div class="password-display">
+                                <div class="password-display-heading">
+                                    <label for="password-output">Generated password</label>
+                                    <span class="private-indicator">
+                                        <span class="status-dot"></span>
+                                        Local
+                                    </span>
+                                </div>
+
+                                <output id="password-output" aria-live="polite"></output>
+                            </div>
+
+                            <div class="entropy-row">
+                                <div>
+                                    <label for="entropy-output">Password entropy</label>
+                                    <p class="field-help">
+                                        Estimated unpredictability
+                                    </p>
+                                </div>
+
+                                <output id="entropy-output"></output>
+                            </div>
+
+                            <output id="copied-message" role="status" aria-live="polite"></output>
+                        </div>
+
+                        <div class="main-actions">
+                            <button type="button" class="generate-button" id="generate_button">
+                                Generate password
+                                <span aria-hidden="true">↗</span>
+                            </button>
+
+                            <button type="button" id="copy-button">
+                                Copy password
+                            </button>
+                        </div>
+
+                        <p class="result-footnote">
+                            Password generation happens in your browser.
+                            No server is required for the generation process.
+                        </p>
+                    </div>
+                </div>
+            </section>
+
+            <section id="security" class="security-section" aria-labelledby="security-heading">
+                <div class="security-intro">
+                    <p class="section-kicker">THE TECHNOLOGY / 02</p>
+                    <h2 id="security-heading">Security by design.</h2>
+                    <p>
+                        Understand the principles behind the generator,
+                        not just the passwords it produces.
+                    </p>
+                </div>
+
+                <div class="security-grid">
+                    <article class="security-card">
+                        <span class="card-number">01</span>
+                        <h3>Local generation</h3>
+                        <p>
+                            Passwords are generated inside the browser,
+                            without requiring a password-generation server.
+                        </p>
+                    </article>
+
+                    <article class="security-card">
+                        <span class="card-number">02</span>
+                        <h3>Secure randomness</h3>
+                        <p>
+                            The Web Crypto API provides cryptographically
+                            secure random values for character selection.
+                        </p>
+                    </article>
+
+                    <article class="security-card">
+                        <span class="card-number">03</span>
+                        <h3>Unbiased selection</h3>
+                        <p>
+                            Rejection sampling eliminates modulo bias,
+                            giving each enabled character equal probability.
+                        </p>
+                    </article>
+                </div>
+            </section>
+
+        </main>
+
+        <footer class="site-footer">
+            <span class="footer-brand">cipherpass</span>
+            <span>Built around transparency, privacy, and secure randomness.</span>
+        </footer>
+
+    </div>
+</body>
+</html>
